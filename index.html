@@ -2,169 +2,138 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Never Give Up</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f7f7f7;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
       color: #333;
     }
-
-    header {
-      background: url('https://xebecp.github.io/Never-Give-Up-Site/lotus-header.jpg') center/cover no-repeat;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-
-    header p {
-      font-size: 1.5rem;
-      max-width: 600px;
-    }
-
-    section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
+    .container {
+      max-width: 800px;
       margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2.5rem;
-    }
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: white;
+      background: #fff;
+      padding: 30px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      overflow: hidden;
     }
-
-    .card img {
+    h1, h2 {
+      color: #222;
+    }
+    blockquote {
+      font-style: italic;
+      background: #eee;
+      padding: 15px;
+      border-left: 5px solid #888;
+      margin: 20px 0;
+    }
+    form {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #ccc;
+    }
+    textarea, input[type="text"] {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .card .content {
-      padding: 1.5rem;
-    }
-
-    .card h3 {
-      margin-bottom: 0.5rem;
-    }
-
-    footer {
-      background: #111;
-      color: #eee;
-      text-align: center;
-      padding: 2rem;
-      margin-top: 4rem;
-    }
-
-    footer p {
-      font-size: 0.9rem;
-    }
-
-    .button {
-      margin-top: 1rem;
-      display: inline-block;
-      background: #444;
-      color: white;
-      padding: 10px 20px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
       border-radius: 5px;
-      text-decoration: none;
+      font-size: 16px;
     }
-
-    .button:hover {
-      background: #222;
+    button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submitted-story {
+      margin-top: 30px;
+      padding: 20px;
+      background: #e6ffe6;
+      border: 1px solid #8f8;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>"I Came Very Close to Quitting — But I Eventually Decided Against It and Kept Going"</h1>
+    <h2>A tale of silent struggles, inner suffering, and a God who never abandoned me.</h2>
 
-  <!-- Hero Section -->
-  <header>
-    <h1>Never Give Up</h1>
-    <p>Your story has power. Let it be someone else’s reason to keep going.</p>
-  </header>
+    <p>The sun was shining brightly in the evening, and it is still in my memory very clearly and vividly. I was leaning against a cliff overlooking the sea, not for the view, but because I didn't know where else to be. I was lost. Not literally — but mentally, emotionally, spiritually.</p>
 
-  <!-- Stories -->
-  <section>
-    <h2 class="section-title">Real Stories</h2>
-    <div class="story-grid">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Rubik's Cube" />
-        <div class="content">
-          <h3>Rubik's Cube & Life</h3>
-          <p>I used to feel stuck in life like a scrambled cube... until I learned to solve it — one move at a time.</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1520974721262-d7aa89f7a237" alt="Love & Loss" />
-        <div class="content">
-          <h3>Heartbreak to Healing</h3>
-          <p>Love broke me. But in that pain, I found clarity, purpose, and my voice. Pain pushed me to grow.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <p>I was filled with thoughts of possibly ending it all that day.</p>
 
-  <!-- Life Strategy -->
-  <section>
-    <h2 class="section-title">Life Moves & Mindsets</h2>
-    <div class="story-grid">
-      <div class="card">
-        <div class="content">
-          <h3>Start Where You Are</h3>
-          <p>You don’t need everything figured out. Start small. One right step today can change your tomorrow.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="content">
-          <h3>Fail Forward</h3>
-          <p>Failure isn’t the opposite of success — it’s the training ground. Let it teach you.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="content">
-          <h3>Talk to Someone</h3>
-          <p>It’s okay to break. Just don’t break alone. Someone’s listening. Even if it’s just this page right now.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <p>Things had not been entirely centered on the results of the exam themselves. Throughout most of my life, I suffered from an enormous amount of pain built up in me — from being constantly compared to others since the first days of my childhood. No matter how I struggled, I could never be good enough.</p>
 
-  <!-- Footer -->
-  <footer>
-    <p>Made with ❤️ by XebecP | Inspiring real people with real stories.</p>
-    <p>Reach out: <a href="mailto:your@email.com" style="color: #ddd;">Contact Me</a></p>
-  </footer>
+    <p>Even when I did well — above the normal level — my parents never showed me any form of joy or celebration for my success. If I got a good mark, I was good for a moment. If I slipped even a little bit, I would be criticized.</p>
 
+    <p>I saw how they admired and were in awe of other people. I saw how they beamed with pride at the different skills and talents that my younger brother had. But when it came to my case and how they seemed to view me, it was as if I was just a burden that they had to bear with them.</p>
+
+    <p>I attempted to speak about it — to phrase and to label the underlying pain and the chronic frustration that I was experiencing. But when I did, they said that I was being arrogant. That I had an "angry heart." That I was having thoughts of revenge.</p>
+
+    <p>They didn't realize that I was only broken and in pieces. What I had always longed for, above all else in the world, was to hear them say those words:</p>
+
+    <blockquote>"We appreciate your effort."<br />
+    "We're proud of you anyway."<br />
+    "You are loved deeply and without condition — no matter what marks or blemishes you might have."</blockquote>
+
+    <p>But I never heard it.</p>
+
+    <p>I was literally standing on the edge itself on that day. Not because I wished to die… but because I did not know how to keep living this way.</p>
+
+    <p>In that silence, I felt an overwhelming sense that was deeper than the surface.</p>
+
+    <h2>God.</h2>
+
+    <blockquote>He reminded me:<br />
+    "I made the world. I made you."<br />
+    "I don't compare you."<br />
+    "I love you. I am here with you."</blockquote>
+
+    <p>In some inexplicable way, that particular moment was quite sufficient. Sometimes, even now, I am discovered sobbing. The weight of past comparisons and the emptiness of unfulfilled praise still bear so heavily on me. But there is one wonderful thing that I have learned: I don't think it's necessary to prove or show what I can do for the people who refuse my being or know who I really am. My ultimate goal is to pass through personal growth — not for me, but for the people that I hope to serve in the future.</p>
+
+    <p><strong>I came close to giving up. But I didn't.</strong></p>
+
+    <hr />
+    <h2>💬 Share Your Story</h2>
+    <form id="storyForm">
+      <input type="text" id="name" placeholder="Your Name (optional)" />
+      <textarea id="storyInput" rows="6" placeholder="Write your story here..."></textarea>
+      <button type="submit">Submit Story</button>
+    </form>
+
+    <div id="submittedStories"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('storyForm');
+    const storyInput = document.getElementById('storyInput');
+    const submittedStories = document.getElementById('submittedStories');
+    const nameInput = document.getElementById('name');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const story = storyInput.value.trim();
+      const name = nameInput.value.trim();
+
+      if (story) {
+        const storyDiv = document.createElement('div');
+        storyDiv.className = 'submitted-story';
+        storyDiv.innerHTML = `<p><strong>${name || 'Anonymous'} shared:</strong></p><p>${story.replace(/\n/g, '<br>')}</p>`;
+        submittedStories.prepend(storyDiv);
+
+        storyInput.value = '';
+        nameInput.value = '';
+      }
+    });
+  </script>
 </body>
 </html>
