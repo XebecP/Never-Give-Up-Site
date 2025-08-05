@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Never Give Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #222;
+    }
+    blockquote {
+      font-style: italic;
+      background: #eee;
+      padding: 15px;
+      border-left: 5px solid #888;
+      margin: 20px 0;
+    }
+    form {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #ccc;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submitted-story {
+      margin-top: 30px;
+      padding: 20px;
+      background: #e6ffe6;
+      border: 1px solid #8f8;
+      border-radius: 10px;
+    }
+    .comment-section {
+      margin-top: 15px;
+      background: #f9f9f9;
+      padding: 10px;
+      border-left: 3px solid #ccc;
+      border-radius: 5px;
+    }
+    .comment-section textarea {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .comment {
+      background: #fff;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .search-bar {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+    }
+    .like-section {
+      margin-top: 10px;
+    }
+    .like-btn {
+      background-color: #008CBA;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Never Give Up 🙏</h1>
+    <h2>💬 Share Your Story</h2>
+    <form id="storyForm">
+      <input type="text" id="name" placeholder="Your Name (optional)" />
+      <textarea id="storyInput" rows="6" placeholder="Write your story here..."></textarea>
+      <button type="submit">Submit Story</button>
+    </form>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search stories by keyword...">
+      <button onclick="searchStories()">Search</button>
+    </div>
+
+    <div id="submittedStories"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('storyForm');
+    const storyInput = document.getElementById('storyInput');
+    const submittedStories = document.getElementById('submittedStories');
+    const nameInput = document.getElementById('name');
+    const searchInput = document.getElementById('searchInput');
+
+    function loadStories(filter = '') {
+      submittedStories.innerHTML = '';
+      const stories = JSON.parse(localStorage.getItem('stories')) || [];
+      const filteredStories = filter ? stories.filter(s => s.story.toLowerCase().includes(filter.toLowerCase())) : stories;
+      filteredStories.reverse().forEach(s => renderStory(s.name, s.story, s.id, s.comments, s.likes));
+    }
+
+    function saveStory(name, story, id) {
+      const stories = JSON.parse(localStorage.getItem('stories')) || [];
+      stories.push({ name, story, id, comments: [], likes: 0 });
+      localStorage.setItem('stories', JSON.stringify(stories));
+    }
+
+    function updateComments(storyId, newComment) {
+      const stories = JSON.parse(localStorage.getItem('stories')) || [];
+      const story = stories.find(s => s.id === storyId);
+      if (story) {
+        story.comments.push(newComment);
+        localStorage.setItem('stories', JSON.stringify(stories));
+      }
+    }
+
+    function updateLikes(storyId) {
+      const stories = JSON.parse(localStorage.getItem('stories')) || [];
+      const story = stories.find(s => s.id === storyId);
+      if (story) {
+        story.likes++;
+        localStorage.setItem('stories', JSON.stringify(stories));
+        loadStories(searchInput.value.trim());
+      }
+    }
+
+    function renderStory(name, story, id, comments = [], likes = 0) {
+      const storyDiv = document.createElement('div');
+      storyDiv.className = 'submitted-story';
+      storyDiv.innerHTML = `
+        <p><strong>${name || 'Anonymous'} shared:</strong></p>
+        <p>${story.replace(/\n/g, '<br>')}</p>
+        <div class="like-section">
+          <button class="like-btn" onclick="updateLikes(${id})">👍 Like (${likes})</button>
+        </div>
+        <div class="comment-section" data-story-id="${id}">
+          <strong>Comments:</strong>
+          <div class="comments">
+            ${comments.map(c => `<div class='comment'>${c}</div>`).join('')}
+          </div>
+          <textarea rows="2" placeholder="Write a comment..."></textarea>
+          <button onclick="addComment(event, ${id})">Add Comment</button>
+        </div>
+      `;
+      submittedStories.prepend(storyDiv);
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const story = storyInput.value.trim();
+      const name = nameInput.value.trim();
+      if (story) {
+        const storyId = Date.now();
+        renderStory(name, story, storyId);
+        saveStory(name, story, storyId);
+        storyInput.value = '';
+        nameInput.value = '';
+      }
+    });
+
+    function addComment(event, storyId) {
+      const commentSection = event.target.closest('.comment-section');
+      const textarea = commentSection.querySelector('textarea');
+      const commentText = textarea.value.trim();
+      if (commentText) {
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'comment';
+        commentDiv.textContent = commentText;
+        commentSection.querySelector('.comments').appendChild(commentDiv);
+        updateComments(storyId, commentText);
+        textarea.value = '';
+      }
+    }
+
+    function searchStories() {
+      const filter = searchInput.value.trim();
+      loadStories(filter);
+    }
+
+    loadStories();
+  </script>
+</body>
+</html>
